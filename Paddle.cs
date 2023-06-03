@@ -7,7 +7,7 @@ using PhpSerializerNET;
 using System.ComponentModel.Design;
 using System.Text;
 
-namespace Paddle
+namespace Loggernow.Paddle.Payments
 {
     public class Paddle
     {
