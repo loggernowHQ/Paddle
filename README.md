@@ -1,4 +1,4 @@
-![Logo](https://loggernowtest.blob.core.windows.net/public-files/loggernowMsHeader.png)
+![Logo]![Logo](https://raw.githubusercontent.com/loggernowHQ/Paddle/fb15486273e023ce6f1627a2be3ea9c3da0c9db8/Documentation/Images/loggernowMsHeader.png))
 
 # Paddle
 This package is **under development** and functionality is being added as needed during developement of my side project  [loggernow.com](http://loggernow.com) which aims to provide easy monitoring and searching of logs.
