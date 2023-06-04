@@ -6,6 +6,7 @@ using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
 using PhpSerializerNET;
 using System.ComponentModel.Design;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web;
@@ -63,7 +64,7 @@ namespace Loggernow.Paddle.Payments
         /// <param name="req"></param>
         /// <returns>PaddleWebhook model</returns>
         /// <exception cref="Exception">Throws error if HttpRequest filed is not set in class</exception>
-        public PaddleWebhook ParsePaddleWebhook(HttpRequest? req)
+        public PaddleWebhook ParsePaddleWebhook([Optional] HttpRequest req)
         {
             if (req == null && _req!=null)
             {
