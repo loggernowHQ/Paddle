@@ -68,11 +68,11 @@ namespace Loggernow.Paddle.Payments
         {
             if (req == null && _req!=null)
             {
-                return new PaddleWebhook(_req);
+                return new PaddleWebhook(_req,_logger);
             }
             else if(req!=null && req!=null)
             {
-                return new PaddleWebhook(req);
+                return new PaddleWebhook(req,_logger);
             }
             else
             {

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -125,23 +127,32 @@ namespace Loggernow.Paddle.Models
         /// This Takes in Http request and initialises all paddle webhook model  fileds present in http request
         /// </summary>
         /// <param name="req"></param>
-        public PaddleWebhook(HttpRequest req)
+        public PaddleWebhook(HttpRequest req,[Optional] ILogger logger)
         {
             var formItemList = req.Form.ToList();
             var type = this.GetType();
             var properties = type.GetProperties();
             foreach (var formItem in formItemList)
             {
+                bool formValueSet = false;
                 foreach (var property in properties)
                 {
-                    if (property.Name == formItem.Key && property.CanWrite)
+                    string propertyName=property.Name;
+                    string formValue = formItem.Value;
+                    string formKey = formItem.Key;
+                    if (propertyName == formKey && property.CanWrite)
                     {
-                        property.SetValue(this, formItem.Value, null);
+                        property.SetValue(this, formValue, null);
+                        formValueSet = true;
                     }
-                    else if(property.Name == formItem.Key && !property.CanWrite)
+                    else if(property.Name == formKey && !property.CanWrite)
                     {
                         throw new Exception("Unable to set propert present in paddle webhook.Please contact Author or check github repository.");
                     }
+                }
+                if (formValueSet == false)
+                {
+                    logger.LogCritical("Paddle Webhook structure has changed the field "+formItem.Key+" is not present in class variables.Create issue on github.");
                 }
             }
         }
