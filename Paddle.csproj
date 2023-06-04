@@ -8,7 +8,7 @@
 	<Authors>Raj Patil</Authors>
 	<Company>Loggernow</Company>
 	<Description>Unofficial helpful sdk for Paddle </Description>
-	<VersionPrefix>0.0.1</VersionPrefix>
+	<VersionPrefix>0.0.1.2</VersionPrefix>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<PackageProjectUrl>https://loggernow.com</PackageProjectUrl>
 	<RepositoryUrl>https://github.com/loggernowHQ/Paddle</RepositoryUrl>
