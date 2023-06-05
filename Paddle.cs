@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
+using Loggernow.Paddle.Utils;
 using PhpSerializerNET;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
@@ -16,14 +17,15 @@ namespace Loggernow.Paddle.Payments
     public partial class Paddle
     {
         private readonly string _publicKey;
-        private readonly ILogger _logger;
+        //private readonly ILogger _logger;
+        private LgLogger _logger;
 
         private HttpRequest _req;
 
-        public Paddle(string publicKey,  ILogger logger )
+        public Paddle(string publicKey, [Optional] ILogger logger )
         {
             _publicKey = publicKey;
-            _logger = logger;
+            _logger = new LgLogger(logger);
         }
 
         /// <summary>
