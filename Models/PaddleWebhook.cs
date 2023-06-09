@@ -29,6 +29,9 @@ namespace Loggernow.Paddle.Models
         public string? product_id { get; set; }
 
         [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string? attempt_number { get; set; }
+
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string? used_price_override { get; set; }
 
         [DisplayFormat(ConvertEmptyStringToNull = false)]
